@@ -7,28 +7,21 @@ import PackageDescription
 // MARK: - Package
 
 let package = Package(
-    name: "REPLACE_ME",
-    platforms: [
-        .iOS(.v26),
-        .macOS(.v26),
-        .tvOS(.v26),
-        .watchOS(.v26),
-        .visionOS(.v26),
-    ],
+    name: "JokeAPI",
     products: [
         .library(
-            name: "REPLACE_ME",
-            targets: ["REPLACE_ME"]
+            name: "JokeAPI",
+            targets: ["JokeAPI"]
         )
     ],
     dependencies: [
         .package(url: "https://github.com/Brent-Tunnicliff/swift-format-plugin", .upToNextMajor(from: "2.0.0"))
     ],
     targets: [
-        .target(name: "REPLACE_ME"),
+        .target(name: "JokeAPI"),
         .testTarget(
-            name: "REPLACE_METests",
-            dependencies: ["REPLACE_ME"]
+            name: "JokeAPITests",
+            dependencies: ["JokeAPI"]
         ),
     ]
 )
