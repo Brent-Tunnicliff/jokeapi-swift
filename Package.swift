@@ -8,6 +8,7 @@ import PackageDescription
 
 let package = Package(
     name: "JokeAPI",
+    platforms: [.macOS(.v12)],
     products: [
         .library(
             name: "JokeAPI",
