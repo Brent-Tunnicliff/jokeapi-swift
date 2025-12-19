@@ -7,7 +7,7 @@ import PackageDescription
 // MARK: - Package
 
 let package = Package(
-    name: "JokeAPI",
+    name: "jokeapi-swift",
     platforms: [.macOS(.v12)],
     products: [
         .library(
@@ -30,19 +30,19 @@ let package = Package(
 // MARK: - Common target settings
 
 // Sets values that are common for every target.
-for target in package.targets {
-
+// Plugins cannot contain plugins or swift settings.
+for target in package.targets where target.type != .plugin {
     // MARK: Plugins
 
-    let plugins = target.plugins ?? []
-    target.plugins = plugins + [
+    let commonPlugins: [PackageDescription.Target.PluginUsage] = [
         .plugin(name: "LintBuildPlugin", package: "swift-format-plugin")
     ]
 
+    target.plugins = (target.plugins ?? []) + commonPlugins
+
     // MARK: Swift compliler settings
 
-    let swiftSettings = target.swiftSettings ?? []
-    target.swiftSettings = swiftSettings + [
+    let commonSwiftSettings: [PackageDescription.SwiftSetting] = [
         // Optional: Set defaultIsolation to `MainActor` if desired.
         // Probably only useful in a UI heavy package.
         // .defaultIsolation(MainActor.self),
@@ -53,4 +53,6 @@ for target in package.targets {
         .enableUpcomingFeature("MemberImportVisibility"),
         .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
     ]
+
+    target.swiftSettings = (target.swiftSettings ?? []) + commonSwiftSettings
 }

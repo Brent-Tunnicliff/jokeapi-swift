@@ -3,6 +3,7 @@
 import Testing
 @testable import JokeAPI
 
-@Test func example() async throws {
+@Test
+func example() async throws {
     #expect(Example.shared.getMessage() == "Hello, World!")
 }
