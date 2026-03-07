@@ -1,6 +1,15 @@
 {
-  "originHash" : "f9c8f461910e81c9a352fa727096ce29e5b3439647f29fac5db58b316c7d4abc",
+  "originHash" : "c6cb1c016fa503b6aa08dec02466724db557c34d501c90891310c46e047c687b",
   "pins" : [
+    {
+      "identity" : "lib-url-macro-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Brent-Tunnicliff/lib-url-macro-swift",
+      "state" : {
+        "revision" : "9ebfb59079c3116178b7020d7bc8d3326871be73",
+        "version" : "1.0.0-beta.2"
+      }
+    },
     {
       "identity" : "swift-argument-parser",
       "kind" : "remoteSourceControl",

@@ -21,9 +21,9 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser.git", .upToNextMajor(from: "1.2.0")),
         .package(url: "https://github.com/apple/swift-crypto.git", .upToNextMajor(from: "4.2.0")),
+        .package(url: "https://github.com/Brent-Tunnicliff/lib-url-macro-swift", .upToNextMajor(from: "1.0.0-beta.1")),
         .package(url: "https://github.com/Brent-Tunnicliff/swift-format-plugin", .upToNextMajor(from: "2.0.0")),
         .package(url: "https://github.com/swiftlang/swift-syntax.git", from: "602.0.0"),
-        .package(path: "../lib-url-macro-swift")
     ],
     targets: [
         .target(
