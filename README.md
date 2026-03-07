@@ -1,4 +1,5 @@
-# Swift wrapper of JokeApi
+# SwiftJoke
+
 
 A simple library to retrieve jokes from [Sv443's JokeAPI](https://v2.jokeapi.dev/).
 

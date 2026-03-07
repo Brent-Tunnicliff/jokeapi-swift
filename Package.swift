@@ -4,26 +4,47 @@
 
 import PackageDescription
 
-// MARK: - Package
-
 let package = Package(
-    name: "jokeapi-swift",
-    platforms: [.macOS(.v12)],
+    name: "swift-joke",
+    defaultLocalization: "en",
+    platforms: [.macOS(.v13)],
     products: [
         .library(
-            name: "JokeAPI",
-            targets: ["JokeAPI"]
+            name: "SwiftJoke",
+            targets: ["SwiftJoke"]
+        ),
+        .executable(
+            name: "joke",
+            targets: ["joke"]
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/Brent-Tunnicliff/swift-format-plugin", .upToNextMajor(from: "2.0.0"))
+        .package(url: "https://github.com/apple/swift-argument-parser.git", .upToNextMajor(from: "1.2.0")),
+        .package(url: "https://github.com/apple/swift-crypto.git", .upToNextMajor(from: "4.2.0")),
+        .package(url: "https://github.com/Brent-Tunnicliff/swift-format-plugin", .upToNextMajor(from: "2.0.0")),
+        .package(url: "https://github.com/swiftlang/swift-syntax.git", from: "602.0.0"),
+        .package(path: "../lib-url-macro-swift")
     ],
     targets: [
-        .target(name: "JokeAPI"),
-        .testTarget(
-            name: "JokeAPITests",
-            dependencies: ["JokeAPI"]
+        .target(
+            name: "SwiftJoke",
+            dependencies: [
+                .product(name: "Crypto", package: "swift-crypto"),
+                .product(name: "URLMacro", package: "lib-url-macro-swift")
+            ]
         ),
+        .testTarget(
+            name: "SwiftJokeTests",
+            dependencies: ["SwiftJoke"]
+        ),
+        .executableTarget(
+            name: "joke",
+            dependencies: [
+                "SwiftJoke",
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+            ],
+            path: "Sources/JokeExecutable"
+        )
     ]
 )
 
@@ -43,10 +64,6 @@ for target in package.targets where target.type != .plugin {
     // MARK: Swift compliler settings
 
     let commonSwiftSettings: [PackageDescription.SwiftSetting] = [
-        // Optional: Set defaultIsolation to `MainActor` if desired.
-        // Probably only useful in a UI heavy package.
-        // .defaultIsolation(MainActor.self),
-
         .enableUpcomingFeature("ExistentialAny"),
         .enableUpcomingFeature("InferIsolatedConformances"),
         .enableUpcomingFeature("InternalImportsByDefault"),

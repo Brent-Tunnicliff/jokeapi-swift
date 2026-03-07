@@ -13,8 +13,8 @@
       "targets" : [
         {
           "containerPath" : "container:",
-          "identifier" : "JokeAPI",
-          "name" : "JokeAPI"
+          "identifier" : "SwiftJoke",
+          "name" : "SwiftJoke"
         }
       ]
     },
@@ -26,8 +26,8 @@
     {
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "JokeAPITests",
-        "name" : "JokeAPITests"
+        "identifier" : "SwiftJokeTests",
+        "name" : "SwiftJokeTests"
       }
     }
   ],
